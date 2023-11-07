@@ -29,6 +29,13 @@ $if(theme)$
 $else$
   <link rel="stylesheet" href="$revealjs-url$/dist/theme/black.css" id="theme">
 $endif$
+$if(highlightjs)$
+$if(highlightjs-theme)$
+  <link rel="stylesheet" href="$revealjs-url$/plugin/highlight/$highlightjs-theme$.css">
+$else$
+  <link rel="stylesheet" href="$revealjs-url$/plugin/highlight/monokai.css">
+$endif$
+$endif$
 $for(css)$
   <link rel="stylesheet" href="$css$"/>
 $endfor$
@@ -86,6 +93,9 @@ $body$
   <script src="$revealjs-url$/plugin/zoom/zoom.js"></script>
 $if(mathjax)$
   <script src="$revealjs-url$/plugin/math/math.js"></script>
+$endif$
+$if(highlightjs)$
+  <script src="$revealjs-url$/plugin/highlight/highlight.js"></script>
 $endif$
 
   <script>
@@ -307,6 +317,9 @@ $endif$
         plugins: [
 $if(mathjax)$
           RevealMath,
+$endif$
+$if(highlightjs)$
+          RevealHighlight,
 $endif$
           RevealNotes,
           RevealSearch,
